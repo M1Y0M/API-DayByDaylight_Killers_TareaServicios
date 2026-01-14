@@ -1,0 +1,32 @@
+
+Arma:
+
+{
+	"nombre": "Cualquier nombre",
+}
+
+
+Habilidad:
+
+{
+	"nombre": "Vile Purge",
+    "descripcion": "Permite infectar a los supervivientes",
+    "cooldown": "3.2"
+}
+
+Killer:
+
+{
+    "nombreKiller": "The Plague",
+    "nombreOriginal": "Adiris",
+    "sitioOrigen": "Babylonian",
+    "estatura": "Alto",
+    "velocidad": 4.6,
+    "radioTerror": 32,
+    "habilidad": {
+        "id": 4
+    },
+    "arma": {
+        "id": 4
+    }
+}
