@@ -35,5 +35,14 @@ public class HabilidadControlador {
         return habilidadSer.crearHabilidad(habilidad); // El controlador envía el objeto al servicio, servicio devuelve el objeto guardado y el controlador lo devuelve (en json).
     }
 
+    @DeleteMapping("/{id}")
+    public void borrarHabilidadPorID(@PathVariable Long id) {
+        habilidadSer.borrarHabilidad(id);
+    }
+
+    @PutMapping("/{id}")               //Para obtener el id que se ha buscado y el objeto.
+    public Optional<Habilidad> modificarHabilidad(@PathVariable Long id, @RequestBody Habilidad habilidadNuevosDatos) {
+        return habilidadSer.modificarHabilidad(id, habilidadNuevosDatos);
+    }
 
 }

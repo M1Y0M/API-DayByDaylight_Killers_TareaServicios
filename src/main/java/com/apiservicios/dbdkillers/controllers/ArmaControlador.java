@@ -34,6 +34,14 @@ public class ArmaControlador {
         return armaSer.crearArma(arma); // El controlador envía el objeto al servicio, servicio devuelve el objeto guardado y el controlador lo devuelve (en json).
     }
 
+    @DeleteMapping("/{id}")
+    public void borrarArmaPorID(@PathVariable Long id) {
+        armaSer.borrarArma(id);
+    }
 
+    @PutMapping("/{id}")               //Para obtener el id que se ha buscado y el objeto.
+    public Optional<Arma> modificarArma(@PathVariable Long id, @RequestBody Arma armaNuevosDatos) {
+        return armaSer.modificarArma(id, armaNuevosDatos);
+    }
 
 }

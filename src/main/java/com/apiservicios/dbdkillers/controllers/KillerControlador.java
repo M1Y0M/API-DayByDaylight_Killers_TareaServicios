@@ -23,7 +23,7 @@ public class KillerControlador {
         return killerSer.todosLosKillers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")                    // PathVariable para que coja el dato de la ruta.
     public Optional<Killer> encontrarPorID(@PathVariable Long id) { //Optional para indicar que puede no existir.
        return killerSer.encontrarKiller(id);
     }
@@ -31,5 +31,15 @@ public class KillerControlador {
     @PostMapping // Endpoint para crear.
     public Killer crearKiller(@RequestBody Killer killer) { // @RequestBody para que SB sepa que se trata de un objeto y pasarlo a java.
         return killerSer.crearKiller(killer); // El controlador envía el objeto al servicio, servicio devuelve el objeto guardado y el controlador lo devuelve (en json).
+    }
+
+    @DeleteMapping("/{id}")
+    public void borrarKillerPorID(@PathVariable Long id) {
+        killerSer.borrarKiller(id);
+    }
+
+    @PutMapping("/{id}")               //Para obtener el id que se ha buscado y el objeto.
+    public Optional<Killer> modificarArma(@PathVariable Long id, @RequestBody Killer killerNuevosDatos) {
+        return killerSer.modificarKiller(id, killerNuevosDatos);
     }
 }
