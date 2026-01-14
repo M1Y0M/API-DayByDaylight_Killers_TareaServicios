@@ -7,6 +7,6 @@ public interface ArmaRepositorio extends JpaRepository <Arma, Long> {
 
     public boolean existsByNombre(String nombre);
 
-
+    public Long countByKillerId(Long idKiller);
 
 }

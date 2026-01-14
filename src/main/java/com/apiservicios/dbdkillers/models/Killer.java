@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data // Crea los getters, setters, etc.
 @NoArgsConstructor // Para que cree el constructor vacío.
@@ -23,8 +25,8 @@ public class Killer {
     @JoinColumn (name = "habilidad") //El nombre por defecto sería habilidad_id (creo).
     private Habilidad habilidad;
 
-    @ManyToOne // Solo puede tener un arma.
+    @ManyToOne
     @JoinColumn (name = "arma")
-    private Arma arma;
+    Arma armas;
 
 }

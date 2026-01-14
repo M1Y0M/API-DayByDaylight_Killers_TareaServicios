@@ -61,6 +61,10 @@ public class ArmaServicio {
 
     }
 
+    public Long conteo(Long idPadre) {
+        return armaRepo.countByKillerId(idPadre);
+    }
+
 
 
 }

@@ -51,7 +51,7 @@ public class KillerServicio {
             killerMod.setEstatura(killerNuevosDatos.getEstatura());
             killerMod.setVelocidad(killerNuevosDatos.getVelocidad());
             killerMod.setRadioTerror(killerNuevosDatos.getRadioTerror());
-            killerMod.setArma(killerNuevosDatos.getArma()); //Hacerla antes de. Se cambia el id en el put.
+            killerMod.setArmas(killerNuevosDatos.getArmas()); //Hacerla antes de. Se cambia el id en el put.
             killerMod.setHabilidad(killerNuevosDatos.getHabilidad());
 
 

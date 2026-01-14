@@ -49,4 +49,11 @@ public class ArmaControlador {
         return armaSer.saveAll(armas);
     }
 
+/*
+    @GetMapping("/{id}/conteo")
+  //  public Long contar(PathVariable Long id) {
+        return armaSer.conteo(id);
+    }
+
+ */
 }
