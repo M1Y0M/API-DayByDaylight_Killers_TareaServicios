@@ -20,3 +20,5 @@ public class Habilidad {
     private double cooldown;
 
 }
+
+// Si alguien pierde su habilidad pierde todas sus armas.

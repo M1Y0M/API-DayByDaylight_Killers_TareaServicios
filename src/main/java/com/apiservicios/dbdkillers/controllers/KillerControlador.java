@@ -17,6 +17,8 @@ public class KillerControlador {
     public KillerControlador (KillerServicio killerSer) {
         this.killerSer = killerSer;
     }
+
+
     
     @GetMapping
     public List<Killer> todosLosKillers() {
@@ -47,5 +49,6 @@ public class KillerControlador {
     public Optional<Killer> encontrarPorNombreYRadio(@RequestParam String nombreKiller, @RequestParam int radioTerror) {
         return killerSer.buscarPorNombreKillerYRadioTerror(nombreKiller, radioTerror);
     }
+
 
 }

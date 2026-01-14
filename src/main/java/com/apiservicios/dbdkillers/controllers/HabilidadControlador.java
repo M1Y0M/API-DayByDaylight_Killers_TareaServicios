@@ -7,6 +7,7 @@ import com.apiservicios.dbdkillers.services.HabilidadServicio;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -44,5 +45,15 @@ public class HabilidadControlador {
     public Optional<Habilidad> modificarHabilidad(@PathVariable Long id, @RequestBody Habilidad habilidadNuevosDatos) {
         return habilidadSer.modificarHabilidad(id, habilidadNuevosDatos);
     }
+
+
+    @PatchMapping("/{id}")
+    public Habilidad actualizacionParcial(@PathVariable Long id, @RequestBody Habilidad habilidad) {
+        return habilidadSer.patchUpdate(id, habilidad);
+    }
+
+
+
+
 
 }

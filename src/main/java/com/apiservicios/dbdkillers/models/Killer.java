@@ -23,7 +23,7 @@ public class Killer {
     @JoinColumn (name = "habilidad") //El nombre por defecto sería habilidad_id (creo).
     private Habilidad habilidad;
 
-    @OneToOne // Solo puede tener un arma.
+    @ManyToOne // Solo puede tener un arma.
     @JoinColumn (name = "arma")
     private Arma arma;
 

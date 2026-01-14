@@ -3,9 +3,11 @@ package com.apiservicios.dbdkillers.services;
 import com.apiservicios.dbdkillers.models.Arma;
 import com.apiservicios.dbdkillers.models.Habilidad;
 import com.apiservicios.dbdkillers.repositories.HabilidadRepositorio;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -49,5 +51,31 @@ public class HabilidadServicio {
         // Si no lo encuentra ignora .map y devuelve nulo (como un if).
     }
 
+    /*
+    public Map<String, Habilidad> patchUpdate(Long id, )
+     */
+
+    @Transactional
+    public Habilidad patchUpdate(Long id, Habilidad habilidadModificada) {
+
+        Habilidad habilidadUpdated = habilidadRepo.findById(id).get();
+
+            if (!habilidadModificada.getNombre().isEmpty() && !habilidadModificada.getNombre().equals(habilidadUpdated.getNombre())) {
+                habilidadUpdated.setNombre(habilidadModificada.getNombre()); // Al objeto se le dan los datos que se han devuelto de la mod.
+            }
+
+            if (!habilidadModificada.getDescripcion().isEmpty()  && !habilidadModificada.getDescripcion().equals(habilidadUpdated.getDescripcion())) {
+                habilidadUpdated.setDescripcion(habilidadModificada.getDescripcion());
+            }
+
+            if (habilidadModificada.getCooldown() != habilidadUpdated.getCooldown()) {
+                habilidadUpdated.setCooldown(habilidadModificada.getCooldown());
+            }
+
+            return habilidadRepo.save(habilidadUpdated);
+        }
 
 }
+
+
+
