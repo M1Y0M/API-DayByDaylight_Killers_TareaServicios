@@ -26,7 +26,12 @@ public class KillerServicio {
     }
 
     public Killer crearKiller(Killer killer) {
-        return killerRepo.save(killer); // Servicio envía el objeto a Repo (save), Repo guarda el objeto y se lo devuelve a servicio, Servicio devuelve el objeto guardado.
+
+        if (killerRepo.findByNombreOriginal(killer.getNombreOriginal())) {
+            throw new RuntimeException("Ya existe un killer con ese " + killer.getNombreOriginal());
+        } else {
+            return killerRepo.save(killer); // Servicio envía el objeto a Repo (save), Repo guarda el objeto y se lo devuelve a servicio, Servicio devuelve el objeto guardado.
+        }
     }
 
     public void borrarKiller(Long id) {
@@ -53,6 +58,10 @@ public class KillerServicio {
 
         //Resumen: Busca el objeto. Si lo encuentra map coge el objeto y le cambia directamente el nombre (lo declara y hace el .get() directamente).
         // Si no lo encuentra ignora .map y devuelve nulo (como un if).
+    }
+
+    public Optional<Killer> buscarPorNombreKillerYRadioTerror(String nombreKiller, int radioTerror) {
+        return killerRepo.findByNombreKillerAndRadioTerror(nombreKiller, radioTerror);
     }
 
 }

@@ -42,4 +42,10 @@ public class KillerControlador {
     public Optional<Killer> modificarArma(@PathVariable Long id, @RequestBody Killer killerNuevosDatos) {
         return killerSer.modificarKiller(id, killerNuevosDatos);
     }
+
+    @GetMapping("/buscar") // Se usan los datos en lugar del atributo.
+    public Optional<Killer> encontrarPorNombreYRadio(@RequestParam String nombreKiller, @RequestParam int radioTerror) {
+        return killerSer.buscarPorNombreKillerYRadioTerror(nombreKiller, radioTerror);
+    }
+
 }
