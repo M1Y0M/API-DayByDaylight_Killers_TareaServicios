@@ -1,8 +1,8 @@
 package com.apiservicios.dbdkillers.controllers;
 
 import com.apiservicios.dbdkillers.models.Arma;
-import com.apiservicios.dbdkillers.models.Killer;
 import com.apiservicios.dbdkillers.services.ArmaServicio;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ArmaControlador {
 
     @GetMapping("/{id}")
     public Optional<Arma> encontrarPorID(@PathVariable Long id) { //Optional para indicar que puede no existir.
-        return armaSer.encontrarArma(id);
+            return armaSer.encontrarArma(id);
     }
 
     //Hacerlo antes que el Killer.
@@ -42,6 +42,11 @@ public class ArmaControlador {
     @PutMapping("/{id}")               //Para obtener el id que se ha buscado y el objeto.
     public Optional<Arma> modificarArma(@PathVariable Long id, @RequestBody Arma armaNuevosDatos) {
         return armaSer.modificarArma(id, armaNuevosDatos);
+    }
+
+    @PostMapping("/lote")
+    public List<Arma> crearLoteArmas(@RequestBody List<Arma> armas) {
+        return armaSer.saveAll(armas);
     }
 
 }

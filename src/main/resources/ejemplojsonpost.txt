@@ -30,3 +30,14 @@ Killer:
         "id": 4
     }
 }
+
+Pruebas con armas (lote):
+
+[
+    {
+        "nombre": "Prueba1"
+    },
+    {
+        "nombre": "Prueba2"
+    }
+]

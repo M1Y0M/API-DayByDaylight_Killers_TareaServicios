@@ -2,6 +2,7 @@ package com.apiservicios.dbdkillers.services;
 
 import com.apiservicios.dbdkillers.models.Arma;
 import com.apiservicios.dbdkillers.repositories.ArmaRepositorio;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,4 +42,22 @@ public class ArmaServicio {
     //Resumen: Busca el objeto. Si lo encuentra map coge el objeto y le cambia directamente el nombre (lo declara y hace el .get() directamente).
     } // Si no lo encuentra ignora .map y devuelve nulo (como un if).
 
+    @Transactional // Garantiza que se realicen todos los pasos correctamente o no se hace ninguno (para no meter datos incorrectos en la BD).
+    public List<Arma> saveAll(List<Arma> armas) {
+
+        for (Arma arma: armas) {
+
+            if (armaRepo.existsByNombre(arma.getNombre())) {
+                throw new RuntimeException("Ya existe un arma con nombre " + arma.getNombre());
+            } else if (arma.getNombre().equals("ERROR")) {
+                throw new RuntimeException("No se puede crear un arma con ese nombre (ERROR)");
+            }
+
+            armaRepo.save(arma);
+
+        }
+
+        return armas;
+
+    }
 }

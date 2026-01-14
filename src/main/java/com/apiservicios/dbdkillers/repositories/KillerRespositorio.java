@@ -9,6 +9,7 @@ public interface KillerRespositorio extends JpaRepository <Killer, Long> {
 
     public Optional<Killer> findByNombreKillerAndRadioTerror(String nombreKiller, int radioTerror);
 
-    public boolean findByNombreOriginal(String nombreOriginal);
+    //Hay que usar existBy cuando quieres q devuelva un booleano.
+    public boolean existsByNombreOriginal(String nombreOriginal);
 
 }

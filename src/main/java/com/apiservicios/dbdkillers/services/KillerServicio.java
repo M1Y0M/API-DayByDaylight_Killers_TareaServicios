@@ -1,6 +1,5 @@
 package com.apiservicios.dbdkillers.services;
 
-import com.apiservicios.dbdkillers.models.Arma;
 import com.apiservicios.dbdkillers.models.Killer;
 import com.apiservicios.dbdkillers.repositories.KillerRespositorio;
 import org.springframework.stereotype.Service;
@@ -27,9 +26,9 @@ public class KillerServicio {
 
     public Killer crearKiller(Killer killer) {
 
-        if (killerRepo.findByNombreOriginal(killer.getNombreOriginal())) {
+        if (killerRepo.existsByNombreOriginal(killer.getNombreOriginal())) { // Si encuentra al killer por el nombre original lanza la excepción.
             throw new RuntimeException("Ya existe un killer con ese " + killer.getNombreOriginal());
-        } else {
+        } else { // Si no lo encuentra lo guarda y devuelve.
             return killerRepo.save(killer); // Servicio envía el objeto a Repo (save), Repo guarda el objeto y se lo devuelve a servicio, Servicio devuelve el objeto guardado.
         }
     }
